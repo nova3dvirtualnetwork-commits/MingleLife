@@ -1,0 +1,373 @@
+Private Verification Architecture
+MingleLife Identity, Verification and Realm Assignment System
+Version: 1.0 Draft
+Classification: Core Security Architecture
+Status: Pre-Implementation
+
+Overview
+MingleLife uses a private verification architecture designed to:
+
+Protect user privacy
+Support age-appropriate experiences
+Prevent unauthorized realm access
+Enable Age Progression System (APS) functionality
+Reduce exposure of age-related information
+Support regulatory compliance
+Maintain teen and adult environment separation
+Unlike many social platforms, MingleLife does not publicly display a user's age, birth date, birth year, or age category.
+
+Age information is used exclusively for:
+
+Verification
+Realm assignment
+Safety enforcement
+Legal compliance
+Age progression
+Design Philosophy
+The MingleLife verification model follows a simple rule:
+
+The platform needs to know a user's age group.
+
+Other users do not.
+
+Public display of age information is intentionally restricted to minimize privacy risks and prevent users from being targeted based on age.
+
+Verification Model
+Public Visibility
+Users can see:
+
+Username
+Display Name
+Profile Information
+Achievements
+Membership Duration
+Verified Member Badge
+Users cannot see:
+
+Date Of Birth
+Birth Year
+Exact Age
+Teen Status
+Adult Status
+Verification Details
+Public Verification Badge
+When verification requirements have been satisfied:
+
+✓ Verified Member
+The badge indicates:
+
+Identity requirements satisfied
+Realm assignment complete
+Account in good standing
+The badge does NOT indicate:
+
+Adult
+Teen
+Age
+Birth Date
+Birth Year
+Internal Verification States
+The platform maintains private verification states.
+
+Users cannot view another user's state.
+
+UNVERIFIED
+
+PENDING_VERIFICATION
+
+TEEN_VERIFIED
+
+ADULT_VERIFIED
+
+VERIFICATION_EXPIRED
+
+VERIFICATION_REVIEW
+
+SUSPENDED
+These values remain internal.
+
+Identity Database
+Private identity information is stored separately from profile information.
+
+Identity Record
+User ID
+Date Of Birth
+Verification Status
+Verification Date
+Verification Provider
+Verification Reference
+Realm Assignment
+APS Status
+This information is never exposed publicly.
+
+Public Profile Database
+Visible information is stored separately.
+
+Public Profile
+User ID
+Username
+Display Name
+Avatar
+Membership Date
+Public Achievements
+Public Biography
+Verified Member Indicator
+No age-related information exists in public profile storage.
+
+Realm Assignment System
+Every verified user receives a private realm assignment.
+
+Possible values:
+
+TEEN
+
+ADULT
+Realm assignments are enforced by backend systems.
+
+Users may not select a realm manually.
+
+Realm Assignment Workflow
+Registration:
+
+Account Creation
+        ↓
+Date Of Birth Submitted
+        ↓
+Verification Status Pending
+        ↓
+Verification Review
+        ↓
+Realm Assignment
+        ↓
+Verified Member
+Result:
+
+Public Profile
+
+✓ Verified Member
+Only the platform sees the realm.
+
+Access Control Architecture
+When a user attempts to access content:
+
+User Action
+       ↓
+API Gateway
+       ↓
+Authorization Service
+       ↓
+Realm Validation
+       ↓
+Access Granted Or Denied
+Example:
+
+User Realm = TEEN
+
+Destination Realm = ADULT
+
+Result = DENIED
+The client application cannot override this decision.
+
+Private Verification Service
+Responsibilities
+The Verification Service manages:
+
+Verification Requests
+Verification Providers
+Verification Records
+Realm Assignment
+APS Eligibility
+Renewal Requirements
+Verification Records
+Stored information:
+
+Verification Status
+Verified DOB
+Verification Timestamp
+Expiration Date
+Verification Provider ID
+Avoid Stored Information:
+
+Driver License Images
+Passport Images
+Selfies
+Identity Documents
+where operationally and legally possible.
+
+Verified Member Badge Logic
+The badge is granted when:
+
+Verification Successful
+Realm Assigned
+Account Active
+Badge Display:
+
+✓ Verified Member
+Badge Removal:
+
+Verification Expires
+Account Suspended
+Verification Under Review
+Teen Environment Privacy
+Teen users should not be publicly identifiable as teenagers.
+
+The platform therefore avoids displaying:
+
+Teen Badge
+Minor Badge
+Under-18 Badge
+Teen Verification Badge
+The existence of a Teen Environment remains transparent, but individual users are not labeled publicly.
+
+Adult Environment Privacy
+Adult users should not be publicly identifiable through age disclosures alone.
+
+The platform therefore avoids displaying:
+
+18+
+21+
+Adult Verification Badge
+Adult Age Category
+Adult users receive the same public verification badge.
+
+Profile Example
+------------------------------------
+
+Username:
+AuroraSky
+
+Verification:
+✓ Verified Member
+
+Member Since:
+March 2027
+
+Apartment:
+Ocean Towers Penthouse
+
+Achievements:
+17
+
+------------------------------------
+No realm information is displayed.
+
+No age information is displayed.
+
+Invitation Verification Controls
+When invitations occur:
+
+Invite User
+       ↓
+Realm Validation
+       ↓
+Permission Check
+       ↓
+Invite Created Or Rejected
+Example:
+
+Teen → Teen
+
+Allowed
+Example:
+
+Adult → Adult
+
+Allowed
+Example:
+
+Adult → Teen
+
+Rejected
+Example:
+
+Teen → Adult
+
+Rejected
+Users do not see realm mismatch reasons.
+
+The invitation simply cannot be delivered.
+
+APS Integration
+The verification architecture integrates directly with the Age Progression System.
+
+Example:
+
+Teen Verified
+        ↓
+18th Birthday Reached
+        ↓
+APS Eligibility Triggered
+        ↓
+Adult Verification Requested
+        ↓
+Verification Complete
+        ↓
+Adult Realm Assigned
+Public View:
+
+Before:
+✓ Verified Member
+
+After:
+✓ Verified Member
+Nothing changes publicly.
+
+Moderator Access
+Authorized moderators may access:
+
+Verification Status
+Realm Assignment
+Safety Flags
+APS Status
+Moderators may not access:
+
+Identity Documents
+Verification Media
+Provider Records
+unless specifically authorized and operationally necessary.
+
+All access is audited.
+
+Audit Logging
+The platform logs:
+
+Verification Events
+Realm Changes
+APS Changes
+Moderator Access
+Verification Renewals
+Example:
+
+Timestamp
+User ID
+Action
+Actor
+Result
+Privacy Principles
+The Private Verification Architecture follows four rules:
+
+Rule 1
+The platform knows the user's age category.
+
+Rule 2
+Other users do not know the user's age category.
+
+Rule 3
+Age information is used only for access control, safety, APS, and compliance.
+
+Rule 4
+Teen and adult environments are enforced through backend permissions rather than public disclosure.
+
+Architecture Summary
+MingleLife's verification system is built around private age assurance and public privacy.
+
+Users receive:
+
+✓ Verified Member
+The platform privately manages:
+
+Verification Status
+Realm Assignment
+APS Eligibility
+Access Permissions
+This approach allows MingleLife to provide strong realm separation, child safety protections, and age-appropriate experiences while avoiding the unnecessary public disclosure of age-related information.
