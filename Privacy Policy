@@ -1,6 +1,6 @@
 Privacy Policy
 Virtual World Platform
-Version: 1.0 (Draft)
+Version: 1.0 (Canadian Compliance Draft)
 Effective Date: [To Be Determined]
 Last Updated: [To Be Determined]
 
@@ -17,14 +17,19 @@ Your rights regarding your information
 How age verification and age progression systems operate
 By using the Platform, you acknowledge and agree to the practices described in this Privacy Policy.
 
+This Privacy Policy is intended to support compliance with applicable Canadian privacy legislation, including the Personal Information Protection and Electronic Documents Act (PIPEDA). PIPEDA requires organizations to follow principles including accountability, consent, limiting collection, limiting use, safeguards, openness, individual access, and complaint procedures. 【1-082007】【2-d53707】
+
 Privacy Principles
 The Platform is designed around the following privacy principles:
 
+Accountability
+We are responsible for personal information under our control.
+
 Data Minimization
-We collect only the information necessary to operate the Platform.
+We collect only the information reasonably necessary to operate the Platform.
 
 Privacy by Design
-Privacy considerations are incorporated into system architecture and product development.
+Privacy protections are incorporated into the design of our systems and services.
 
 Security
 Reasonable technical and organizational safeguards are used to protect information.
@@ -33,8 +38,23 @@ Transparency
 Users have the right to understand how their information is used.
 
 User Control
-Users may access, update, or request deletion of eligible information where permitted by law.
+Users may access, correct, or request deletion of eligible information where permitted by law.
 
+Privacy Officer
+The Platform designates a Privacy Officer responsible for:
+
+Privacy compliance
+Privacy complaints
+Access requests
+Correction requests
+Data retention oversight
+Security incident response
+Contact Information:
+
+Privacy Officer
+Virtual World Platform
+
+Email: privacy@[yourdomain].com
 Information We Collect
 Account Information
 During registration, we may collect:
@@ -44,7 +64,7 @@ Email Address
 Date of Birth
 Country
 Encrypted Password Credentials
-The Platform uses date of birth information to determine eligibility for age-based environments and future Age Progression System functionality.
+Date of birth information is required for age-based access controls and Age Progression System functionality.
 
 Profile Information
 Users may choose to provide:
@@ -54,23 +74,21 @@ Avatar Appearance
 Profile Description
 Profile Images
 Preferences
-Profile information is visible according to user privacy settings.
+Profile information may be visible to other users depending on privacy settings and environment restrictions.
 
 Platform Activity Information
-We collect information related to platform usage.
+We may collect information relating to platform usage.
 
 Examples include:
 
 Login History
-Session Information
+Session Activity
 Device Information
+Avatar Data
 Housing Data
 Inventory Data
-Avatar Data
-Social Interactions
 Marketplace Activity
-This information helps operate and secure platform services.
-
+Community Activity
 Communication Information
 We may process communications occurring within Platform services.
 
@@ -81,89 +99,118 @@ Private Messages
 Community Discussions
 Marketplace Communications
 Support Requests
-Communications may be reviewed by automated safety systems and authorised moderation personnel for community safety and policy enforcement purposes.
+Communications may be reviewed by automated safety systems and authorized moderation personnel for safety, security, fraud prevention, child protection, and policy enforcement purposes.
 
 Safety and Moderation Information
-To protect users and maintain platform integrity, we may collect:
+To maintain community safety, we may collect:
 
 Reports
-Moderation Actions
+Moderator Decisions
+Appeal Records
 Account Restrictions
-Appeal History
 Safety Flags
 Investigation Records
-This information is used solely for trust and safety purposes.
+This information is used solely for safety, security, and compliance purposes.
 
 Technical Information
-The Platform may automatically collect technical information including:
+The Platform may automatically collect:
 
 IP Address
 Device Type
 Operating System
 Application Version
 Network Information
+Performance Logs
 Crash Reports
-Performance Metrics
-This information supports security, reliability, and troubleshooting.
+This information assists with platform security, stability, and troubleshooting.
 
-Age Verification Information
-The Platform may use third-party age assurance or age verification services.
+Consent
+The Platform collects, uses, and discloses personal information only for identified purposes and with appropriate consent, except where permitted or required by law. 【2-d53707】
 
-Where age verification is required, we seek to minimise collection of sensitive identity information.
+By creating an account and using the Platform, users consent to the collection, use, disclosure, and retention of personal information as described in this Privacy Policy.
 
-Whenever possible, the Platform stores only:
+Users may withdraw consent for certain processing activities, subject to legal, operational, security, or contractual limitations.
+
+Withdrawal of consent may impact the availability of Platform services.
+
+Age Verification and Age Assurance
+The Platform may use trusted third-party age verification or age assurance providers to support:
+
+Age-Based Access Controls
+Teen Environment Access
+Adult Environment Access
+Age Progression System (APS)
+To minimize privacy impacts, the Platform will seek to retain only:
 
 Verification Status
-Verified Date of Birth
+Verified Date Of Birth
 Verification Date
 Verification Expiration Date
-Provider Reference ID
-The Platform will seek to avoid retaining identity documents unless legally required or operationally necessary.
+Provider Reference Identifier
+The Platform will seek to avoid retaining copies of government-issued identification documents unless legally required or operationally necessary.
 
 Age Progression System (APS)
-The Platform includes a future Age Progression System that allows users to transition from Teen Environment access to Adult Environment access when they become eligible.
+The Platform includes a future Age Progression System that allows users to transition from Teen Environment access to Adult Environment access when eligible.
 
 APS may process:
 
-Date of Birth
+Date Of Birth
+Verification Status
 Verification History
 Eligibility Status
 Realm Assignment
-APS decisions are enforced through server-side systems and cannot be modified by users.
+APS decisions are enforced by backend systems and cannot be modified by users.
+
+Privacy Protections for Teen Users
+The Platform provides enhanced privacy protections for users assigned to the Teen Environment.
+
+Additional protections may include:
+
+Restricted Profile Visibility
+Enhanced Moderation Oversight
+Additional Communication Controls
+Limited Public Exposure Of Personal Information
+Parental Or Guardian Controls
+Additional Abuse Prevention Systems
+The Platform seeks to minimize unnecessary collection, use, and disclosure of information relating to teen users.
 
 How We Use Information
-We use personal information to:
+We may use personal information to:
 
-Provide Platform Services
+Create And Manage User Accounts
 Authenticate Users
-Enable Multiplayer Features
+Provide Multiplayer Services
+Store Avatar Data
 Store Housing Data
 Manage Inventories
 Facilitate Marketplace Transactions
 Enforce Community Standards
-Detect Abuse
+Investigate Abuse Reports
 Improve Platform Stability
+Protect Users
 Comply With Legal Obligations
-We do not sell user personal information.
+We do not sell personal information to third parties.
 
-Safety Monitoring
-To protect users, particularly minors, communications and activity may be analysed by automated safety systems.
+Automated Safety Monitoring
+To help protect users and maintain platform integrity, the Platform uses automated systems.
 
-Automated systems may assist with detection of:
+Automated systems may assist with identifying:
 
 Harassment
 Threats
-Fraud
 Spam
-Exploitation
-Policy Violations
-Automated systems assist human moderation but do not replace human judgement for significant enforcement actions.
+Fraud
+Scams
+Exploitation Risks
+Child Safety Concerns
+Community Standards Violations
+Users acknowledge that communications occurring through Platform services may be analyzed by automated systems and reviewed by authorized moderation personnel for safety, security, fraud prevention, and policy enforcement purposes.
+
+Automated systems assist human moderators and do not replace human review for significant enforcement actions.
 
 Sharing Information
-We may share information with:
-
 Service Providers
-Trusted providers assisting with:
+We may share information with trusted providers assisting with:
 
 Hosting
 Cloud Storage
@@ -172,16 +219,17 @@ Age Verification
 Payment Processing
 Security Services
 Analytics
-Service providers receive only information reasonably necessary to perform their functions.
+Customer Support
+Service providers receive only the information reasonably necessary to perform their services.
 
 Legal Compliance
-Information may be disclosed when required:
+Information may be disclosed:
 
-By Law
-By Court Order
-To Comply With Legal Obligations
+When Required By Law
+To Comply With Court Orders
 To Protect Users
 To Investigate Serious Safety Concerns
+To Enforce Platform Policies
 Business Transactions
 If the Platform undergoes:
 
@@ -189,87 +237,130 @@ Merger
 Acquisition
 Sale
 Corporate Restructuring
-user information may be transferred as part of the transaction subject to applicable laws.
+user information may be transferred as part of the transaction, subject to applicable legal requirements.
 
-Teen Environment Privacy
-The Teen Environment operates with enhanced privacy protections.
+Cross-Border Processing and Storage
+The Platform may use service providers located in Canada and other jurisdictions.
 
-Additional restrictions may include:
+Personal information may therefore be processed, stored, or accessed outside Canada.
 
-Limited Profile Visibility
-Restricted Communication Features
-Additional Safety Controls
-Enhanced Moderation
-Parent / Guardian Features
-The Platform seeks to reduce unnecessary public exposure of information relating to minors.
+Where information is transferred outside Canada, the Platform remains responsible for protecting personal information and will implement reasonable contractual, technical, and administrative safeguards. PIPEDA continues to apply to Canadian organizations transferring personal information across borders for commercial purposes. 【1-082007】
 
 Data Retention
-Information is retained only for as long as necessary to:
+The Platform retains personal information only as long as reasonably necessary to:
 
-Operate the Platform
 Provide Services
-Enforce Policies
-Resolve Disputes
-Meet Legal Obligations
+Operate The Platform
 Protect Users
-Retention periods may vary depending on information type.
+Enforce Community Standards
+Resolve Disputes
+Maintain Security
+Comply With Legal Requirements
+When information is no longer required, it will be securely deleted, anonymized, or destroyed in accordance with Platform retention procedures.
 
 Account Deletion
 Users may request account deletion where permitted by law.
 
-Certain information may be retained for:
+Certain information may be retained where necessary for:
 
-Fraud Prevention
 Security
-Legal Compliance
+Fraud Prevention
 Safety Investigations
 Financial Recordkeeping
-Where retention is required, information will be restricted appropriately.
+Legal Compliance
+Dispute Resolution
+Retained information will be restricted to authorized personnel.
 
 Security Measures
-The Platform uses security measures designed to protect information, including:
+The Platform uses safeguards appropriate to the sensitivity of the information it holds.
+
+Examples include:
 
 Encryption In Transit
 Encryption At Rest
-Access Controls
+Role-Based Access Controls
 Audit Logging
-Role-Based Permissions
-Monitoring Systems
+Security Monitoring
 Backup Systems
-No system can guarantee absolute security; however, we strive to maintain strong protections for user information.
+Rate Limiting
+Administrative Controls
+While we work to protect personal information, no security system can guarantee absolute protection.
 
-International Transfers
-Your information may be stored or processed in jurisdictions outside your place of residence.
+Security Incidents and Breach Notification
+The Platform maintains procedures for identifying, responding to, and documenting security incidents.
 
-Where information is transferred internationally, reasonable safeguards will be implemented as appropriate.
+Where required by applicable law, affected individuals will be notified when a privacy breach creates a real risk of significant harm.
 
-User Rights
-Subject to applicable laws, users may have rights to:
+The Platform will maintain records of security incidents and take reasonable steps to mitigate risks associated with any breach.
 
-Access Personal Information
-Correct Inaccurate Information
-Request Deletion
-Object To Certain Processing
-Request Data Portability
-Withdraw Certain Consents
-Requests may require identity verification.
+Access and Correction Rights
+Subject to applicable laws, users may request:
+
+Access To Personal Information
+Correction Of Inaccurate Information
+Information About How Information Is Used
+Information Regarding Information Disclosures
+Requests should be directed to the Privacy Officer.
+
+Proof of identity may be required before information is disclosed.
+
+Additional User Rights
+Depending on applicable laws, users may have rights relating to:
+
+Access
+Correction
+Deletion
+Data Portability
+Objection To Processing
+Withdrawal Of Consent
+Some rights may be restricted by legal, security, operational, or contractual requirements.
 
 Children's Privacy
-The Platform is designed to support age-appropriate experiences for eligible teenage users.
+The Platform is designed to provide age-appropriate experiences for eligible teen users.
 
-Additional safeguards may apply to accounts belonging to minors.
+Additional privacy and safety protections may apply to minors.
 
-Users below the minimum permitted age for the Platform may not create accounts.
+Users below the minimum permitted platform age may not create accounts.
 
 Third-Party Services
 The Platform may integrate with third-party services including:
 
 Authentication Providers
 Age Verification Providers
-Cloud Providers
+Cloud Infrastructure Providers
 Payment Processors
-Analytics Services
-Those providers may maintain separate privacy policies governing their own processing activities.
+Analytics Providers
+Content Delivery Providers
+These providers maintain their own privacy policies governing their services.
+
+Challenging Compliance and Privacy Complaints
+Users who believe the Platform has not complied with this Privacy Policy or applicable privacy legislation may submit a complaint to the Privacy Officer.
+
+Complaints may involve:
+
+Collection Practices
+Consent
+Access Requests
+Correction Requests
+Retention Practices
+Security Safeguards
+Disclosure Practices
+Complaints will be investigated and addressed within a reasonable period.
+
+Users may also have the right to contact the Office of the Privacy Commissioner of Canada regarding privacy concerns. 【1-082007】【2-d53707】
+
+Accountability
+The Platform is responsible for personal information under its control.
+
+We implement:
+
+Privacy Policies
+Employee Access Controls
+Security Safeguards
+Audit Procedures
+Training Programs
+Oversight Mechanisms
+to support ongoing compliance with applicable privacy legislation. Accountability is one of the core principles established by PIPEDA. 【1-082007】【2-d53707】
 
 Policy Updates
 This Privacy Policy may be updated periodically.
@@ -277,22 +368,27 @@ This Privacy Policy may be updated periodically.
 Material changes may be communicated through:
 
 Website Notices
-Application Notices
+Application Notifications
 Email Notifications
-Continued use of the Platform after updates may constitute acceptance of revised policies.
+Continued use of the Platform after policy updates may constitute acceptance of the revised policy.
 
 Contact
-Questions regarding this Privacy Policy may be directed to:
-
 Privacy Officer
 Virtual World Platform
 
 Email: privacy@[yourdomain].com
-Summary
-The Virtual World Platform is built on four privacy commitments:
+Website: https://www.[yourdomain].com
+Canadian Privacy Commitment
+The Virtual World Platform is built upon the following commitments:
 
-Collect only what is needed.
-Protect user information.
-Provide transparency and control.
-Maintain enhanced protections for minors.
-Our goal is to create a virtual world that allows users to socialize, create, and grow over time while respecting privacy, security, and age-appropriate safeguards.
+Collect only necessary information.
+Use information only for identified purposes.
+Obtain meaningful consent.
+Protect personal information through appropriate safeguards.
+Limit retention of personal information.
+Provide transparency and user access rights.
+Maintain enhanced protections for teen users.
+Support accountability and compliance.
+Promote user safety through responsible moderation.
+Respect privacy while enabling meaningful social experiences.
+Our goal is to create a virtual world where users can safely create, socialize, explore, and grow while maintaining trust, privacy, and security throughout their journey.
