@@ -1,0 +1,390 @@
+MVP Specification
+Virtual World Platform v0.1
+Version: 1.0
+Status: Pre-Production
+Target Platform: Windows Desktop
+Engine: Unity 6
+Backend: Nakama + PostgreSQL
+Purpose: Validate the core social virtual world experience before introducing economies, marketplaces, creator systems, age progression, and teen environments.
+
+Executive Summary
+The MVP exists to answer a single question:
+
+Will users enjoy entering a persistent virtual social world, customising their avatar, decorating their personal space, and interacting with other users?
+
+The MVP is not intended to launch the complete vision of the platform.
+
+The objective is to validate:
+
+Avatar creation
+Multiplayer networking
+Social interaction
+Virtual housing
+Data persistence
+User retention
+before investing in:
+
+Virtual economy
+Marketplace
+Creator monetisation
+Teen environment
+Mobile support
+Voice communication
+Success Criteria
+Technical Goals
+Support 50 concurrent users
+Stable multiplayer sessions
+Persistent user accounts
+Persistent housing layouts
+Reliable chat functionality
+User Experience Goals
+Users should:
+
+Create an avatar
+Explore the virtual world
+Socialise with others
+Decorate their apartment
+Return to the platform repeatedly
+Architectural Goals
+The MVP architecture must support future implementation of:
+
+Age Progression System (APS)
+Teen Environment
+Creator Marketplace
+Mobile Applications
+Virtual Economy
+Included Features
+1. User Account System
+Description
+Users can create and access accounts.
+
+Features
+Registration
+Login
+Logout
+Password Reset
+Persistent User Profile
+Required Fields
+Username
+Email
+Password
+Date of Birth
+Country
+Important
+Date of birth is collected immediately.
+
+Although age restrictions will not be active during the MVP, the database must be designed for future APS integration.
+
+2. Realm Architecture Foundation
+Description
+The MVP launches only with the Adult Environment.
+
+However, the realm system must be built from the beginning.
+
+Initial Realm
+ADULT
+Future Realm
+TEEN
+Requirements
+Every account contains:
+
+realm_id
+Every room contains:
+
+realm_id
+This avoids major rewrites later.
+
+3. Avatar Creation System
+Description
+Users create and customise a personal avatar.
+
+Available Options
+Body Type:
+
+Male
+Female
+Neutral
+Appearance:
+
+Hair
+Eyes
+Face
+Skin Tone
+Starter Clothing:
+
+Top
+Bottom
+Shoes
+Requirements
+Avatar saved to database
+Avatar restored on login
+Avatar displayed to other users
+4. Social Hub Environment
+Description
+A shared public world where users meet and socialise.
+
+MVP Environment
+Town Square
+Includes:
+
+Spawn Area
+Open Social Space
+Park
+Apartment Entrance
+Purpose:
+
+Social Interaction
+Exploration
+Player Visibility
+No quests or gameplay systems required.
+
+5. Multiplayer Movement
+Features
+Character movement
+Character rotation
+Basic animations
+Join server
+Leave server
+Requirements
+Users can:
+
+See other players
+Move in real time
+Observe avatar animations
+6. Text Chat System
+Features
+Public room chat
+Send message
+Receive message
+Timestamp messages
+Basic profanity filter
+User Controls
+Mute user
+Block user
+Report user
+Excluded
+Private Messaging
+Voice Chat
+Group Chat
+7. Personal Housing System
+Description
+Every user receives a private apartment.
+
+Apartment Type
+Studio Apartment
+Features
+Users can:
+
+Enter apartment
+Exit apartment
+Save layout
+Decorate interior
+All layout data must persist between sessions.
+
+8. Furniture Placement System
+Starter Furniture
+Chair
+Table
+Bed
+Lamp
+Couch
+Plant
+Available Actions
+Place
+Move
+Rotate
+Remove
+Save
+Requirements
+Furniture locations persist after logout.
+
+9. Inventory System
+Description
+Stores the user's owned furniture items.
+
+Features
+Inventory Window
+Owned Item Listing
+Furniture Placement
+Furniture Removal
+Excluded
+Trading
+Gifting
+Selling
+10. Safety Reporting System
+Features
+Users can report:
+
+User Accounts
+Usernames
+Messages
+Avatars
+Report Categories
+Harassment
+Spam
+Inappropriate Content
+Threats
+Other
+Requirements
+Reports include:
+
+Reporter ID
+Reported User ID
+Timestamp
+Evidence Reference
+11. Blocking System
+Features
+Users may:
+
+Block User
+Unblock User
+Mute User
+Blocked Users
+Cannot:
+
+Communicate directly
+Interact through platform systems
+12. Moderator Administration Panel
+Internal Use Only
+Moderators can:
+
+View Reports
+View User Profiles
+Mute Accounts
+Suspend Accounts
+Ban Accounts
+MVP Goal
+Basic moderation functionality only.
+
+Future Systems Planned But Not Included
+The architecture must support these future systems.
+
+Age Progression System (APS)
+Teen → Adult Transition
+Teen Environment
+Teen-Only Realm
+Marketplace
+Creator Asset Marketplace
+Mobile Applications
+Android
+iOS
+Voice Chat
+Realm-Specific Voice Services
+Virtual Currency
+Coins
+Premium Currency
+Subscriptions
+Player Businesses
+Shops
+Venues
+Services
+Creator Programme
+User Generated Assets
+Explicitly Excluded From Version 0.1
+To prevent scope creep, the following systems are not allowed in the MVP.
+
+Not Included
+Marketplace
+Payments
+Subscriptions
+Teen Environment
+Voice Chat
+Friends System
+Groups
+Guilds
+Virtual Economy
+Trading
+User Generated Content
+Businesses
+Events System
+VR Support
+Mobile Clients
+Age Verification
+APS Functionality
+Technology Stack
+Client
+Unity 6
+C#
+Content Creation
+Blender
+Multiplayer
+Nakama
+Backend
+Node.js
+TypeScript
+NestJS
+Database
+PostgreSQL
+Storage
+Cloudflare R2
+CDN
+Cloudflare
+Initial System Architecture
+Unity Client
+      │
+      ▼
+Nakama Server
+      │
+      ▼
+API Services
+      │
+      ▼
+PostgreSQL Database
+Data Stored:
+
+Accounts
+Avatars
+Apartments
+Furniture Layouts
+Inventory
+Reports
+MVP User Flow
+A user should be able to:
+
+Create an account
+Log in
+Create an avatar
+Enter the social hub
+See other players
+Move around the environment
+Chat publicly
+Enter their apartment
+Place and move furniture
+Log out
+Return later with all progress saved
+If the above workflow functions reliably, the MVP is considered complete.
+
+Post-MVP Development Roadmap
+Version 0.2
+Friends System
+Private Messaging
+Expanded Housing
+Version 0.3
+Marketplace Foundation
+Creator Framework
+Asset Ownership
+Version 0.4
+Age Verification
+APS Core Services
+Realm Permissions
+Version 0.5
+Teen Environment Prototype
+Parent Controls
+Enhanced Safety Systems
+Version 1.0
+Adult Environment
+Teen Environment
+Age Progression System
+Marketplace
+Creator Economy
+Mobile Applications
+MVP Principle
+Build the smallest possible virtual world that proves users enjoy being there.
+
+A successful platform with:
+
+50 Active Users
+Reliable Multiplayer
+Persistent Housing
+Healthy Social Interaction
+is significantly more valuable than a partially completed metaverse with hundreds of unfinished features.
