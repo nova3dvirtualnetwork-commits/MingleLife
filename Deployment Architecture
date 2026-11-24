@@ -1,0 +1,295 @@
+Deployment Architecture
+Overview
+The deployment architecture is designed to support:
+
+Desktop clients
+Mobile clients
+Future VR clients
+Realm separation
+Horizontal scaling
+Centralized moderation
+High availability
+Future global expansion
+The system follows a cloud-native deployment model using containerized backend services.
+
+Production Deployment Diagram
+┌────────────────────────────────────────────┐
+│                 USERS                      │
+├──────────────┬──────────────┬──────────────┤
+│ Windows      │ Mobile       │ Future VR    │
+│ Unity Client │ Unity Client │ Unity Client │
+└───────┬──────┴──────┬───────┴──────┬───────┘
+        │             │              │
+        ▼             ▼              ▼
+
+┌────────────────────────────────────────────┐
+│              CLOUDFLARE CDN                │
+│ Assets • Images • Bundles • Caching       │
+└──────────────────┬─────────────────────────┘
+                   │
+                   ▼
+
+┌────────────────────────────────────────────┐
+│              API GATEWAY                    │
+│ Authentication │ Routing │ Rate Limiting   │
+└───────────────┬───────────┬────────────────┘
+                │           │
+                ▼           ▼
+
+ ┌───────────────────┐ ┌───────────────────┐
+ │ Identity Service  │ │ Safety Service    │
+ │ Auth              │ │ Reports           │
+ │ APS               │ │ Moderation        │
+ │ Verification      │ │ AI Scoring        │
+ └─────────┬─────────┘ └─────────┬─────────┘
+           │                     │
+           └─────────┬───────────┘
+                     │
+                     ▼
+
+┌────────────────────────────────────────────┐
+│              APPLICATION BUS                │
+│ Internal API Communication                  │
+└───────────────┬───────────────┬────────────┘
+                │               │
+                │               │
+
+      ┌─────────▼───────┐ ┌─────▼──────────┐
+      │ Adult Services  │ │ Teen Services  │
+      │                 │ │                │
+      │ Chat            │ │ Chat           │
+      │ Inventory       │ │ Inventory      │
+      │ Housing         │ │ Housing        │
+      │ Marketplace     │ │ Marketplace    │
+      │ Friends         │ │ Friends        │
+      └───────┬─────────┘ └──────┬─────────┘
+              │                  │
+              ▼                  ▼
+
+      ┌──────────────┐    ┌──────────────┐
+      │ Adult DB     │    │ Teen DB      │
+      │ PostgreSQL   │    │ PostgreSQL   │
+      └──────────────┘    └──────────────┘
+
+                ▲
+                │
+                │
+
+┌────────────────────────────────────────────┐
+│              IDENTITY DATABASE             │
+│ Users │ APS │ Authentication │ Billing     │
+└────────────────────────────────────────────┘
+
+                ▲
+                │
+                │
+
+┌────────────────────────────────────────────┐
+│            MULTIPLAYER CLUSTER             │
+│                 NAKAMA                     │
+├────────────────────────────────────────────┤
+│ Adult Realm Game Instances                 │
+│ Teen Realm Game Instances                  │
+│ Matchmaking                                │
+│ Presence                                   │
+│ Realtime Chat                              │
+└────────────────────────────────────────────┘
+
+                ▲
+                │
+                │
+
+┌────────────────────────────────────────────┐
+│           CLOUD OBJECT STORAGE             │
+│ Avatar Assets                              │
+│ Furniture Assets                           │
+│ Marketplace Content                        │
+│ User Uploads                               │
+└────────────────────────────────────────────┘
+MVP Deployment Architecture
+The MVP deployment should remain extremely simple.
+
+Internet
+     │
+     ▼
+
+Cloudflare
+     │
+     ▼
+
+Single VPS / Cloud Server
+
+├── Unity API Backend
+├── Nakama
+├── PostgreSQL
+└── Object Storage
+Example Providers:
+
+DigitalOcean
+Hetzner
+AWS Lightsail
+Azure VM
+Vultr
+MVP Infrastructure Layout
+Server 1
+
+8 CPU
+16 GB RAM
+250 GB SSD
+
+Services
+
+- Nakama
+- PostgreSQL
+- Backend API
+- Reverse Proxy
+Expected Capacity:
+
+50-100 Concurrent Users
+Approximate Monthly Cost:
+
+$25-$100 USD
+Growth Deployment Architecture
+When the platform grows beyond MVP:
+
+Load Balancer
+      │
+      ▼
+
+Multiple API Servers
+
+API-01
+API-02
+API-03
+
+      │
+      ▼
+
+Nakama Cluster
+
+Game-01
+Game-02
+Game-03
+Game-04
+
+      │
+      ▼
+
+Managed PostgreSQL Cluster
+
+Primary
+Replica
+Backup
+
+      │
+      ▼
+
+Cloud Object Storage
+Realm Isolation Deployment
+Adult and Teen environments should eventually operate as independent service groups.
+
+Adult Cluster
+
+Adult Chat
+Adult Marketplace
+Adult Social Systems
+
+--------------------------------
+
+Teen Cluster
+
+Teen Chat
+Teen Marketplace
+Teen Social Systems
+Shared Services:
+
+Authentication
+APS
+Safety Service
+Billing
+Monitoring
+This architecture reduces the risk of cross-realm data leakage.
+
+Monitoring Architecture
+Application Logs
+        │
+        ▼
+
+Central Logging
+
+        │
+        ▼
+
+Grafana Dashboard
+
+        │
+        ▼
+
+Alerting
+
+Discord
+Email
+SMS
+Monitored Metrics:
+
+CPU
+Memory
+Players Online
+Database Usage
+Chat Volume
+Report Volume
+Latency
+API Errors
+Backup Architecture
+Daily Backups
+
+Identity Database
+Adult Database
+Teen Database
+Retention:
+
+Daily: 30 Days
+Monthly: 12 Months
+Yearly: 7 Years
+Object Storage:
+
+Versioned Storage
+Cross-Region Replication
+Disaster Recovery
+Recovery Objectives:
+
+RPO (Data Loss)
+
+< 24 Hours
+
+RTO (Recovery Time)
+
+< 4 Hours
+Critical Services:
+
+Authentication
+APS
+Moderation
+Database Access
+Multiplayer
+Future Global Deployment
+Regional clusters may eventually be introduced.
+
+Canada East
+Canada West
+US East
+US West
+Europe
+Asia Pacific
+Each region would operate:
+
+Local multiplayer servers
+Local asset caching
+Regional matchmaking
+while maintaining:
+
+Global Identity
+Global APS
+Global Safety Systems
+Global Economy
+This allows the platform to scale from a 50-user MVP to a large persistent virtual world without redesigning the core infrastructure.
