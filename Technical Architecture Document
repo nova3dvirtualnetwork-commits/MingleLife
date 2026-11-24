@@ -1,0 +1,477 @@
+Technical Architecture Document
+Virtual World Platform
+Version: 1.0
+Status: Draft Architecture
+Target Platforms: Windows, macOS, Android, iOS
+Game Engine: Unity 6
+Primary Language: C#
+Backend Language: TypeScript
+Database: PostgreSQL
+Multiplayer: Nakama
+Cloud Infrastructure: Cloudflare + Cloud Hosting Provider
+
+1. Purpose
+This document defines the technical architecture of the Virtual World Platform.
+
+The architecture has been designed to support:
+
+Cross-platform deployment
+Large-scale social interaction
+Persistent user identities
+Avatar customization
+Housing systems
+Marketplace systems
+Age Progression System (APS)
+Teen and Adult environment separation
+Trust & Safety systems
+Future creator economy
+The platform is built around a server-authoritative model where all permissions and age restrictions are enforced by backend services rather than client applications.
+
+2. Architectural Principles
+Security First
+All permissions must be validated by the server.
+
+Clients must never determine access rights.
+
+Safety First
+Teen and adult environments must remain logically and socially separated.
+
+Safety systems are part of the architecture and not optional features.
+
+Scalability
+Every major service should be independently scalable.
+
+Modularity
+Systems should be loosely coupled and capable of being replaced without requiring platform-wide redesign.
+
+Persistence
+User progress, property ownership, purchases and account history must survive across sessions.
+
+3. High-Level Architecture
+                      Unity Client
+           Desktop | Mobile | Future VR
+                              │
+                              ▼
+
+                     API Gateway Layer
+                              │
+     ┌──────────────┬─────────┴──────────┬──────────────┐
+     │              │                    │              │
+     ▼              ▼                    ▼              ▼
+
+ Authentication   Multiplayer      Social Systems     Safety
+    Service         Service            Service         Service
+
+     │              │                    │              │
+     └───────┬──────┴──────────┬─────────┴───────┬──────┘
+             │                 │                 │
+             ▼                 ▼                 ▼
+
+         Identity DB      Adult Realm DB    Teen Realm DB
+4. Client Architecture
+Engine
+Unity 6
+Responsible for:
+
+Rendering
+UI
+Character Controllers
+Housing Editor
+Asset Streaming
+Networking Client
+Input Handling
+Client Modules
+Authentication Module
+Avatar Module
+World Module
+Housing Module
+Inventory Module
+Chat Module
+Marketplace Module
+Safety Reporting Module
+Settings Module
+Each module remains independent.
+
+5. Backend Architecture
+API Layer
+Technology:
+
+Node.js
+TypeScript
+NestJS
+Responsibilities:
+
+Authentication
+Data Access
+Business Logic
+Permissions
+APS Integration
+Marketplace Transactions
+Microservice Philosophy
+Services are separated by responsibility.
+
+Identity Service
+Avatar Service
+Housing Service
+Marketplace Service
+Social Service
+APS Service
+Safety Service
+Payment Service
+Services communicate through authenticated APIs.
+
+6. Authentication Service
+Purpose
+Manage user identity.
+
+Responsibilities
+Registration
+Login
+Password Reset
+Account Recovery
+Session Management
+MFA Support
+User Account Model
+User
+├── Identity
+├── Verification Status
+├── Realm Assignment
+├── Inventory
+├── Housing
+└── Permissions
+7. Age Progression System (APS)
+Purpose
+Manage lifecycle transitions between Teen and Adult environments.
+
+Account States
+TEEN_ACTIVE
+
+ADULT_ELIGIBLE
+
+ADULT_VERIFICATION_PENDING
+
+ADULT_ACTIVE
+Transition Flow
+Teen User
+      │
+Turns 18
+      │
+APS Notification
+      │
+Adult Verification
+      │
+Approval
+      │
+Adult Activation
+The client may not override APS decisions.
+
+APS Rules
+Transfer Allowed:
+
+Username
+Avatar Identity
+Eligible Inventory
+Homes
+Achievements
+Purchases
+Transfer Restricted:
+
+Friend Lists
+Private Messages
+Teen Communities
+Teen Social Graph
+8. Realm Architecture
+The platform consists of two isolated realms.
+
+Teen Realm
+Adult Realm
+Realm Isolation
+Cross-realm interaction is prohibited.
+
+The following are blocked:
+
+Messaging
+Voice Chat
+Friend Requests
+Trading
+Gifting
+Marketplace Access
+Community Membership
+Realm Validation
+Example:
+
+User Realm = TEEN
+Room Realm = ADULT
+
+Result = Access Denied
+All validation occurs server-side.
+
+9. Multiplayer Architecture
+Technology
+Nakama
+Responsibilities
+Realtime Connections
+Matchmaking
+Presence Management
+Room Synchronization
+Chat Infrastructure
+Room Structure
+{
+  "roomId": "A10001",
+  "realm": "ADULT",
+  "capacity": 100
+}
+Future Scaling
+Multiple World Servers
+Regional Instances
+Load Balancing
+Dynamic Room Creation
+10. Avatar Service
+Purpose
+Manage appearance and avatar assets.
+
+Avatar Components
+Body
+Face
+Hair
+Eyes
+Clothing
+Accessories
+Animations
+Asset Structure
+Asset ID
+Creator ID
+Realm ID
+Ownership
+Approval Status
+11. Inventory Service
+Stores user-owned assets.
+
+Asset Types
+Furniture
+Clothing
+Accessories
+Decorations
+Premium Items
+Asset Properties
+Owner
+Item Type
+Realm
+Acquisition Date
+Transfer Eligibility
+12. Housing System
+Every user may own one or more homes.
+
+Components
+Property
+Rooms
+Furniture
+Decorations
+Permissions
+Layout Storage
+{
+  "objectId": "chair001",
+  "position": [10,0,5],
+  "rotation": [0,90,0]
+}
+Future Extensions
+Apartments
+Houses
+Businesses
+Venues
+Community Spaces
+13. Social Systems
+Features
+Public Chat
+Private Messaging
+Friend Lists
+Communities
+Events
+Realm Enforcement
+Every social interaction validates:
+
+User Realm
+Target Realm
+Content Permission
+14. Marketplace Architecture
+Purpose
+Allow creators to distribute virtual assets.
+
+Marketplace Types
+Teen Marketplace
+Adult Marketplace
+Asset Approval Pipeline
+Creator Upload
+      │
+Automated Review
+      │
+Moderator Review
+      │
+Approval
+      │
+Marketplace Release
+15. Safety Service
+The Safety Service operates independently of Teen and Adult realms.
+
+Responsibilities
+Reports
+Investigations
+Risk Scoring
+Moderation
+Appeals
+Abuse Monitoring
+16. AI Safety Engine
+Purpose
+Identify potentially harmful behaviour.
+
+AI assists moderators.
+
+AI does not make final enforcement decisions.
+
+Monitored Signals
+Harassment
+Threats
+Spam
+Scams
+Predatory Behaviour
+Ban Evasion
+Marketplace Fraud
+Risk Scoring
+Example:
+
+0-20   Low Risk
+21-50  Medium Risk
+51-80  High Risk
+81-100 Critical Risk
+Escalation
+AI Detection
+      │
+Risk Score
+      │
+Moderator Queue
+      │
+Human Decision
+17. Reporting System
+Users can report:
+
+Profiles
+Messages
+Avatars
+Properties
+Marketplace Assets
+Communities
+Report Process
+Report Submitted
+      │
+Evidence Attached
+      │
+Safety Queue
+      │
+Moderator Review
+      │
+Decision
+18. Data Architecture
+Identity Database
+Stores:
+
+Users
+Authentication
+Age Verification
+APS Records
+Billing
+Adult Database
+Stores:
+
+Adult Avatars
+Adult Homes
+Adult Inventory
+Adult Social Data
+Adult Messages
+Teen Database
+Stores:
+
+Teen Avatars
+Teen Homes
+Teen Inventory
+Teen Social Data
+Teen Messages
+19. Storage Architecture
+Object Storage
+Stores:
+
+Avatar Assets
+Furniture Assets
+Textures
+Images
+Marketplace Content
+Technology:
+
+Cloudflare R2
+CDN
+Purpose:
+
+Fast Asset Delivery
+Reduced Server Load
+Global Content Distribution
+Technology:
+
+Cloudflare
+20. Monitoring
+Application Monitoring
+Sentry
+Tracks:
+
+Client Errors
+Server Errors
+Crashes
+Exceptions
+Infrastructure Monitoring
+Grafana
+Prometheus
+Tracks:
+
+CPU
+Memory
+Latency
+Concurrency
+Database Load
+21. Security Requirements
+All systems must follow:
+
+Server-Side Authorization
+Encryption In Transit
+Encryption At Rest
+Audit Logging
+Rate Limiting
+Role-Based Access Control
+Moderator Actions
+Every administrative action must be logged.
+
+Examples:
+
+Warnings
+Mutes
+Suspensions
+Bans
+Appeals
+22. Future Expansion
+Architecture must support:
+
+Mobile Applications
+Voice Chat
+Creator Economy
+Virtual Currency
+Business Ownership
+VR Clients
+AI NPC Systems
+Regional Server Clusters
+without requiring redesign of core systems.
+
+Conclusion
+The Virtual World Platform architecture is designed around four foundational pillars:
+
+Identity Continuity
+Realm Separation
+Trust & Safety
+Scalable Social Interaction
+The system allows users to grow with their accounts over time while ensuring that age-appropriate environments remain isolated, secure, and manageable as the platform expands from a small prototype to a large-scale persistent virtual world.
